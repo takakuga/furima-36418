@@ -16,34 +16,24 @@
 ### Association
 
 - has_many :items
-- has_many :comments
 - has_one :buys
 
-## itmes テーブル
+## items テーブル
 
-| Column      | Type       | Options                        |
-| ------      | ---------- | ------------------------------ |
-| text        | string     | null: false                    |
-| image       | string     | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------       | ---------- | ------------------------------ |
+| title        | string     | null: false                    |
+| text         | string     | null: false                    |
+| image        | string     | null: false                    |
+| item_detail  | string     | null: false                    |
+| delivery     | string     | null: false                    |
+| price        | string     | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
-- has_many :comments
 
-## comments テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| text   | string     | null: false                   |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :items
-- belongs_to :users
 
 ## buys テーブル
 
@@ -58,9 +48,11 @@
 
 ## shoppings address テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| user         | references | null: false, foreign_key: true |
+| send_address | string     | null: false,                   |
+| telephone    | string     | null: false,                   |
 
 ### Association
 
