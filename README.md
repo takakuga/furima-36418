@@ -12,33 +12,32 @@
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | birthday           | date   | null: false               |
-| address            | string | null: false               |
 
 
 ### Association
 
 - has_many :items
-- has_one :buys
+- has_many :buys
 
 ## items テーブル（商品情報）
 
-| Column             | Type       | Options                        |
-| -------------------| ---------- | ------------------------------ |
-| user               | references | null: false, foreign_key: true |
-| product_name       | text       | null: false                    |
-| description        | string     | null: false                    |
-| state              | string     | null: false                    |
-| region             | string     | null: false                    |
-| postage            | string     | null: false                    |
-| price              | string     | null: false                    |
-| days_delivery_id   | string     | null: false                    |
-| category_id        | string     | null: false                    |
+| Column             | Type        | Options                        |
+| -------------------| ----------  | ------------------------------ |
+| user               | references  | null: false, foreign_key: true |
+| product_name       | string      | null: false                    |
+| description        | text        | null: false                    |
+| state_id           | integer     | null: false                    |
+| prefecture_id      | integer     | null: false                    |
+| postage_id         | integer     | null: false                    |
+| price              | integer     | null: false                    |
+| day_delivery_id    | integer     | null: false                    |
+| category_id        | integer     | null: false                    |
 
 
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :buy
 
 
@@ -59,15 +58,15 @@
 
 ## residences テーブル (配送先住所)
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| user         | references | null: false, foreign_key: true |
-| postal_code  | string     | null: false,                   |
-| delivery_id  | integer    | null: false,                   |
-| address      | string     | null: false,                   |
-| building_name| string     |                                |
-| phone_number | string     | null: false,                   |
+| Column        | Type       | Options                        |
+| ------------  | ---------- | ------------------------------ |
+| buy           | references | null: false, foreign_key: true |
+| postal_code   | string     | null: false,                   |
+| prefecture_id | integer    | null: false,                   |
+| address       | string     | null: false,                   |
+| building_name | string     |                                |
+| phone_number  | string     | null: false,                   |
 
 ### Association
 
-- belongs_to :buys
+- belongs_to :buy
