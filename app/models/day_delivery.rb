@@ -1,9 +1,9 @@
 class DayDelivery < ActiveHash::Base
   self.data = [
-    { id: 1, value: '__' },
-    { id: 2, value: '1~2日で発送' },
-    { id: 3, value: '2~3日で発送' },
-    { id: 4, value: '4~7日で発送' }
+    { id: 1, name: '__' },
+    { id: 2, name: '1~2日で発送' },
+    { id: 3, name: '2~3日で発送' },
+    { id: 4, name: '4~7日で発送' }
   ]
 
   include ActiveHash::Associations
