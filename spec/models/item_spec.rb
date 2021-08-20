@@ -67,8 +67,8 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price Out of setting range")
     end
-    it '販売価格は、¥300~¥9,999,999の間のみ保存可能であること' do
-      @item.price = 100
+    it '販売価格は、10,000,000以上は保存できない' do
+      @item.price = 10000001
       @item.valid?
       expect(@item.errors.full_messages).to include("Price Out of setting range")
     end

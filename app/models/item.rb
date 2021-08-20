@@ -9,13 +9,19 @@ class Item < ApplicationRecord
   # has_one :buy
   has_one_attached :image
   
-  validates :image, presence: true
-  validates :product_name, presence: true
-  validates :description, presence: true
-  validates :category_id, numericality: { other_than: 1 }
-  validates :status_id, numericality: { other_than: 1 }
-  validates :postage_id, numericality: { other_than: 1 }
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :day_delivery_id, numericality: { other_than: 1 }
+  with_options presence: true do
+  validates :image
+  validates :product_name
+  validates :description
+  end
+
+  with_options numericality: { other_than: 1 } do
+  validates :category_id
+  validates :status_id
+  validates :postage_id
+  validates :prefecture_id
+  validates :day_delivery_id
+  end
+  
   validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: "Half-width number" }, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "Out of setting range" }
 end
