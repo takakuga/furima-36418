@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :postage
   belongs_to :prefecture
   belongs_to :day_delivery
-  # has_one :buy
+  has_one :buy
   has_one_attached :image
 
   with_options presence: true do
