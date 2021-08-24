@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_115933) do
   end
 
   create_table "residences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "buy_id", null: false
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_115933) do
     t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_residences_on_user_id"
+    t.index ["buy_id"], name: "index_residences_on_buy_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,5 +92,5 @@ ActiveRecord::Schema.define(version: 2021_08_22_115933) do
   add_foreign_key "buys", "items"
   add_foreign_key "buys", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "residences", "users"
+  add_foreign_key "residences", "buys"
 end

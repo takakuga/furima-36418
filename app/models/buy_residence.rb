@@ -1,6 +1,6 @@
-class FurimaResidence
+class BuyResidence
   include ActiveModel::Model
-  attr_accessor :user_id, :postal_code, :prefecture, :city, :address, :building_name, :phone_number
+  attr_accessor :user_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :item_id, :buy_id
 
   with_options presence: true do
     validates :user_id
@@ -10,9 +10,10 @@ class FurimaResidence
     validates :phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
 
   end
-  validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
+  validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
   def save
     buy  = Buy.create(user_id: user_id, item_id: item_id)
-    Address.create(postal_code: postal_code. prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, buy_id: buy.id)
+    Residence.create(buy_id: buy.id, postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number)
+  end
 end
