@@ -10,7 +10,7 @@ end
 
 describe '商品購入' do
   context '必要な情報を適切に入力して「購入」ボタンを押すと、商品の購入ができること' do
-    it 'postal_code,prefecture_id,city,address,building_name,phone_number' do
+    it 'postal_code,prefecture_id,city,address,building_name,phone_number,token' do
       expect(@buy_residence).to be_valid
     end
     it '建物名は任意であること' do
@@ -74,6 +74,11 @@ describe '商品購入' do
       @buy_residence.item_id = ''
         @buy_residence.valid?
         expect(@buy_residence.errors.full_messages).to include("Item can't be blank")
+    end
+    it "tokenが空では登録できないこと" do
+      @buy_residence.token = nil
+      @buy_residence.valid?
+      expect(@buy_residence.errors.full_messages).to include("Token can't be blank")
     end
    end
   end
